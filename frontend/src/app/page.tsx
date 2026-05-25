@@ -1,4 +1,5 @@
-import Hero from "@/components/Hero";
+import dynamic from "next/dynamic";
+const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
 import FeaturedCollections from "@/components/FeaturedCollections";
 
 export default function Home() {
