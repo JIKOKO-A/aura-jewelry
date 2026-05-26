@@ -14,6 +14,10 @@ php artisan view:cache
 echo "Running migrations..."
 php artisan migrate --force
 
+# Seed database only if it's empty
+echo "Checking if database needs seeding..."
+php artisan tinker --execute="if (\App\Models\User::count() === 0) { \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]); echo 'Seeded successfully.'; } else { echo 'Database already seeded.'; }"
+
 # Start PHP-FPM in the background
 echo "Starting PHP-FPM..."
 php-fpm -D
