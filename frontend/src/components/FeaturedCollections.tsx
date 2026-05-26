@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const collections = [
   {
@@ -42,9 +43,9 @@ export default function FeaturedCollections() {
               Explore our hand-selected ranges designed to elevate your personal style with uncompromising quality and timeless elegance.
             </p>
           </div>
-          <button className="mt-8 md:mt-0 flex items-center gap-2 font-sans uppercase tracking-widest text-sm hover:text-gold transition-colors pb-1 border-b border-transparent hover:border-gold">
+          <Link href="/shop" className="mt-8 md:mt-0 flex items-center gap-2 font-sans uppercase tracking-widest text-sm hover:text-gold transition-colors pb-1 border-b border-transparent hover:border-gold">
             View All <ArrowRight size={16} />
-          </button>
+          </Link>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">

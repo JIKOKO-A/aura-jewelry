@@ -3,6 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sphere } from "@react-three/drei";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 function AbstractJewelry() {
   return (
@@ -61,9 +62,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
           className="mt-12 pointer-events-auto"
         >
-          <button className="px-10 py-4 bg-foreground text-background font-sans tracking-widest text-sm uppercase transition-all hover:bg-foreground/90 hover:scale-105 duration-300">
+          <Link href="/shop" className="inline-block px-10 py-4 bg-foreground text-background font-sans tracking-widest text-sm uppercase transition-all hover:bg-foreground/90 hover:scale-105 duration-300">
             Explore Collection
-          </button>
+          </Link>
         </motion.div>
       </div>
     </section>

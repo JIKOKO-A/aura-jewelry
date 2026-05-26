@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Search, ShoppingBag, Menu, User } from "lucide-react";
+import Link from "next/link";
 
 export default function Navbar() {
   const { scrollY } = useScroll();
@@ -34,16 +35,16 @@ export default function Navbar() {
     >
       {/* Left Links - Hidden on Mobile */}
       <nav className="hidden md:flex gap-8 items-center text-sm uppercase tracking-widest font-sans text-foreground">
-        <a href="#" className="hover:text-gold transition-colors">Shop</a>
-        <a href="#" className="hover:text-gold transition-colors">Collections</a>
-        <a href="#" className="hover:text-gold transition-colors">Our Story</a>
+        <Link href="/shop" className="hover:text-gold transition-colors">Shop</Link>
+        <Link href="/shop" className="hover:text-gold transition-colors">Collections</Link>
+        <Link href="/" className="hover:text-gold transition-colors">Our Story</Link>
       </nav>
 
       {/* Center Logo */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <a href="/" className="font-serif text-3xl tracking-widest text-foreground font-semibold">
+        <Link href="/" className="font-serif text-3xl tracking-widest text-foreground font-semibold">
           AURA
-        </a>
+        </Link>
       </div>
 
       {/* Right Icons */}
@@ -51,13 +52,13 @@ export default function Navbar() {
         <button className="hover:text-gold transition-colors">
           <Search size={20} strokeWidth={1.5} />
         </button>
-        <button className="hidden md:block hover:text-gold transition-colors">
+        <Link href="/dashboard" className="hidden md:block hover:text-gold transition-colors">
           <User size={20} strokeWidth={1.5} />
-        </button>
-        <button className="hover:text-gold transition-colors relative">
+        </Link>
+        <Link href="/checkout" className="hover:text-gold transition-colors relative">
           <ShoppingBag size={20} strokeWidth={1.5} />
           <span className="absolute -top-1 -right-1 bg-foreground text-background text-[10px] h-4 w-4 rounded-full flex items-center justify-center">0</span>
-        </button>
+        </Link>
         <button className="md:hidden hover:text-gold transition-colors">
           <Menu size={20} strokeWidth={1.5} />
         </button>
