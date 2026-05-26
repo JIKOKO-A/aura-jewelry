@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode, useEffect } from "react";
-import Lenis from "lenis";
 
 export default function SmoothScrollProvider({
   children,
@@ -9,21 +8,27 @@ export default function SmoothScrollProvider({
   children: ReactNode;
 }) {
   useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.08, // Apple-like smooth scroll
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
+    let lenis: any;
+    
+    // Safely load lenis strictly on the client side
+    import("lenis").then((module) => {
+      const Lenis = module.default || module;
+      lenis = new (Lenis as any)({
+        lerp: 0.08, // Apple-like smooth scroll
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+      });
 
-    function raf(time: number) {
-      lenis.raf(time);
+      function raf(time: number) {
+        if (lenis) lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
       requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
+    }).catch(e => console.error("Lenis failed to load", e));
 
     return () => {
-      lenis.destroy();
+      if (lenis) lenis.destroy();
     };
   }, []);
 
