@@ -1,9 +1,8 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, Environment, Sphere } from "@react-three/drei";
+import { Float, MeshDistortMaterial, Sphere } from "@react-three/drei";
 import { motion } from "framer-motion";
-import { Suspense } from "react";
 
 function AbstractJewelry() {
   return (
@@ -14,8 +13,8 @@ function AbstractJewelry() {
           attach="material" 
           distort={0.4} 
           speed={1.5} 
-          roughness={0.1}
-          metalness={0.8}
+          roughness={0.15}
+          metalness={0.9}
         />
       </Sphere>
     </Float>
@@ -28,11 +27,10 @@ export default function Hero() {
       {/* 3D Background */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
-          <Suspense fallback={null}>
-            <Environment preset="city" />
-          </Suspense>
+          <ambientLight intensity={1.5} />
+          <directionalLight position={[10, 10, 5]} intensity={2} />
+          <directionalLight position={[-10, -10, -5]} intensity={1} color="#C5A059" />
+          <pointLight position={[0, 5, 2]} intensity={5} color="#ffffff" />
           <AbstractJewelry />
         </Canvas>
       </div>
