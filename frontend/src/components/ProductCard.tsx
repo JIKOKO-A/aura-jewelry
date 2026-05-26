@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ShoppingBag } from "lucide-react";
+import Link from "next/link";
 
 interface ProductProps {
   name: string;
@@ -10,7 +11,7 @@ interface ProductProps {
 
 export default function ProductCard({ name, price, image, category }: ProductProps) {
   return (
-    <div className="group cursor-pointer flex flex-col w-full">
+    <Link href={`/shop/${name.toLowerCase().replace(/\s+/g, '-')}`} className="group cursor-pointer flex flex-col w-full">
       <div className="relative overflow-hidden aspect-[4/5] mb-5 bg-foreground/5 rounded-sm">
         <Image 
           src={image} 
@@ -36,6 +37,6 @@ export default function ProductCard({ name, price, image, category }: ProductPro
         </div>
         <p className="font-sans text-sm tracking-widest text-foreground">{price}</p>
       </div>
-    </div>
+    </Link>
   );
 }
