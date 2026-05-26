@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface ProductProps {
   name: string;
@@ -10,6 +11,7 @@ interface ProductProps {
 }
 
 export default function ProductCard({ name, price, image, category }: ProductProps) {
+  const router = useRouter();
   return (
     <Link href={`/shop/${name.toLowerCase().replace(/\s+/g, '-')}`} className="group cursor-pointer flex flex-col w-full">
       <div className="relative overflow-hidden aspect-[4/5] mb-5 bg-foreground/5 rounded-sm">
@@ -24,7 +26,13 @@ export default function ProductCard({ name, price, image, category }: ProductPro
         
         {/* Hover Add to Cart Button */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 w-[90%] z-10">
-          <button className="w-full bg-background text-foreground py-3 font-sans text-xs tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-foreground hover:text-background transition-colors duration-300">
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              router.push('/checkout');
+            }}
+            className="w-full bg-background text-foreground py-3 font-sans text-xs tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-foreground hover:text-background transition-colors duration-300"
+          >
             <ShoppingBag size={14} strokeWidth={1.5} /> Add to Bag
           </button>
         </div>

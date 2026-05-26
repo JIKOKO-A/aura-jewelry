@@ -47,8 +47,21 @@ export default function Checkout() {
                   <input type="text" placeholder="Last Name" required className="bg-transparent border border-foreground/20 px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold transition-colors" />
                   <input type="email" placeholder="Email Address" required className="md:col-span-2 bg-transparent border border-foreground/20 px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold transition-colors" />
                   <input type="text" placeholder="Address" required className="md:col-span-2 bg-transparent border border-foreground/20 px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold transition-colors" />
-                  <input type="text" placeholder="City" required className="bg-transparent border border-foreground/20 px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold transition-colors" />
-                  <input type="text" placeholder="Country" required className="bg-transparent border border-foreground/20 px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold transition-colors" />
+                  <select required className="bg-transparent border border-foreground/20 px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold transition-colors appearance-none">
+                    <option value="" disabled selected>Select City</option>
+                    <option value="Casablanca">Casablanca</option>
+                    <option value="Rabat">Rabat</option>
+                    <option value="Marrakech">Marrakech</option>
+                    <option value="Tangier">Tangier</option>
+                    <option value="Agadir">Agadir</option>
+                    <option value="Fes">Fes</option>
+                    <option value="Meknes">Meknes</option>
+                    <option value="Oujda">Oujda</option>
+                    <option value="Kenitra">Kenitra</option>
+                    <option value="Tetouan">Tetouan</option>
+                    <option value="Other">Other City</option>
+                  </select>
+                  <input type="text" value="Morocco" disabled className="bg-foreground/5 border border-foreground/10 px-4 py-3 font-sans text-sm text-foreground/50 cursor-not-allowed" />
                 </div>
               </section>
 

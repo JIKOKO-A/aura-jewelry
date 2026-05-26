@@ -34,10 +34,10 @@ export default function Shop() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-8 md:mt-0 flex gap-6"
           >
-            <button className="font-sans text-sm uppercase tracking-widest pb-1 border-b border-foreground hover:text-gold hover:border-gold transition-colors">
+            <button onClick={() => alert('Filter system coming in Phase 6!')} className="font-sans text-sm uppercase tracking-widest pb-1 border-b border-foreground hover:text-gold hover:border-gold transition-colors">
               Filter
             </button>
-            <button className="font-sans text-sm uppercase tracking-widest pb-1 border-b border-foreground hover:text-gold hover:border-gold transition-colors">
+            <button onClick={() => alert('Sorting coming in Phase 6!')} className="font-sans text-sm uppercase tracking-widest pb-1 border-b border-foreground hover:text-gold hover:border-gold transition-colors">
               Sort By
             </button>
           </motion.div>
@@ -60,7 +60,7 @@ export default function Shop() {
         
         {/* Load More */}
         <div className="mt-20 flex justify-center">
-          <button className="px-10 py-4 border border-foreground text-foreground font-sans tracking-widest text-sm uppercase transition-all hover:bg-foreground hover:text-background">
+          <button onClick={() => alert('You have reached the end of the catalog.')} className="px-10 py-4 border border-foreground text-foreground font-sans tracking-widest text-sm uppercase transition-all hover:bg-foreground hover:text-background">
             Load More Pieces
           </button>
         </div>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Search, ShoppingBag, Menu, User } from "lucide-react";
+import { Search, ShoppingBag, Menu, User, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -37,7 +37,9 @@ export default function Navbar() {
       <nav className="hidden md:flex gap-8 items-center text-sm uppercase tracking-widest font-sans text-foreground">
         <Link href="/shop" className="hover:text-gold transition-colors">Shop</Link>
         <Link href="/shop" className="hover:text-gold transition-colors">Collections</Link>
-        <Link href="/" className="hover:text-gold transition-colors">Our Story</Link>
+        <Link href="/admin" className="hover:text-gold transition-colors flex items-center gap-1">
+          <ShieldCheck size={14} /> Admin
+        </Link>
       </nav>
 
       {/* Center Logo */}
