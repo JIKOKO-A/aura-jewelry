@@ -1,18 +1,17 @@
-version: '3.8'
-
 services:
   db:
-    image: postgres:15-alpine
-    container_name: jewelry_postgres
+    image: mysql:8.0
+    container_name: jewelry_mysql
     restart: always
     environment:
-      POSTGRES_DB: jewelry_db
-      POSTGRES_USER: jewelry_user
-      POSTGRES_PASSWORD: secretpassword
+      MYSQL_DATABASE: jewelry_db
+      MYSQL_USER: jewelry_user
+      MYSQL_PASSWORD: secretpassword
+      MYSQL_ROOT_PASSWORD: rootsecretpassword
     ports:
-      - "5432:5432"
+      - "3306:3306"
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/mysql
 
   redis:
     image: redis:7-alpine

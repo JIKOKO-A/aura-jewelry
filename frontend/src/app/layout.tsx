@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Discover elegant, timeless, and meticulously crafted luxury jewelry.",
 };
 
+import AppProviders from "@/components/providers/AppProviders";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,7 +30,9 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        {children}
+        <AppProviders>
+          {children}
+        </AppProviders>
       </body>
     </html>
   );

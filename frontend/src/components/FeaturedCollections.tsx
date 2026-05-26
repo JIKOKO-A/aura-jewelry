@@ -11,18 +11,21 @@ const collections = [
     title: "Bridal Elegance",
     description: "Timeless pieces for your unforgettable day.",
     image: "/images/bridal.png",
+    link: "/shop?category=rings"
   },
   {
     id: 2,
     title: "The Minimalist",
     description: "Subtle luxury for everyday grace.",
     image: "/images/minimalist.png",
+    link: "/shop?category=bracelets"
   },
   {
     id: 3,
     title: "Royal Emerald",
     description: "Make a statement with deep, rich tones.",
     image: "/images/emerald.png",
+    link: "/shop?category=necklaces"
   }
 ];
 
@@ -50,27 +53,28 @@ export default function FeaturedCollections() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {collections.map((collection, index) => (
-            <motion.div
-              key={collection.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="group cursor-pointer flex flex-col"
-            >
-              <div className="relative overflow-hidden aspect-[3/4] mb-6 bg-foreground/5 rounded-sm">
-                <Image 
-                  src={collection.image} 
-                  alt={collection.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-500" />
-              </div>
-              <h3 className="font-serif text-2xl text-foreground mb-2 group-hover:text-gold transition-colors duration-300">{collection.title}</h3>
-              <p className="font-sans text-sm text-foreground/60">{collection.description}</p>
-            </motion.div>
+            <Link href={collection.link} key={collection.id} className="group cursor-pointer flex flex-col">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className="flex flex-col w-full"
+              >
+                <div className="relative overflow-hidden aspect-[3/4] mb-6 bg-foreground/5 rounded-sm w-full">
+                  <Image 
+                    src={collection.image} 
+                    alt={collection.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-500" />
+                </div>
+                <h3 className="font-serif text-2xl text-foreground mb-2 group-hover:text-gold transition-colors duration-300">{collection.title}</h3>
+                <p className="font-sans text-sm text-foreground/60">{collection.description}</p>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>

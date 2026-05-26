@@ -15,10 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Admin user
-        User::factory()->create([
+        User::create([
             'name' => 'Admin User',
             'email' => 'admin@aura.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'is_admin' => true,
+            'aura_points' => 9999
         ]);
 
         // Categories
@@ -40,10 +42,8 @@ class DatabaseSeeder extends Seeder
         foreach ($products as $product) {
             $p = Product::create($product);
             
-            // Add a placeholder image for each
-            $imagePath = '/images/minimalist.png';
-            if (str_contains(strtolower($p->name), 'emerald')) $imagePath = '/images/emerald.png';
-            if (str_contains(strtolower($p->name), 'diamond') || str_contains(strtolower($p->name), 'sapphire')) $imagePath = '/images/bridal.png';
+            // Add the unique generated image for each product based on slug
+            $imagePath = '/images/' . str_replace('-', '_', $p->slug) . '.png';
 
             $p->images()->create([
                 'image_path' => $imagePath,
