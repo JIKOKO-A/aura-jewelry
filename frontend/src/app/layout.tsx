@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
-import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,10 +28,7 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <SmoothScrollProvider>
-          <Navbar />
-          {children}
-        </SmoothScrollProvider>
+        {children}
       </body>
     </html>
   );

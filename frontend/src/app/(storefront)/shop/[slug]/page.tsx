@@ -5,15 +5,19 @@ import Image from "next/image";
 import { ArrowLeft, Minus, Plus, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { useParams } from "next/navigation";
+import { getProductBySlug } from "@/lib/data";
 
 export default function ProductDetails() {
+  const params = useParams();
+  const slug = typeof params.slug === 'string' ? params.slug : '';
+  const productData = getProductBySlug(slug);
+
   const [quantity, setQuantity] = useState(1);
   
   const product = {
-    name: "Diamond Halo Ring",
-    price: "$2,400",
-    description: "A breathtaking center diamond framed by a brilliant halo of pavé-set stones. Expertly crafted in platinum for a lifetime of radiant elegance. This signature piece captures the essence of luxury.",
-    images: ["/images/bridal.png", "/images/minimalist.png", "/images/emerald.png"],
+    ...productData,
+    images: [productData.image, "/images/minimalist.png", "/images/emerald.png"],
     details: ["18k White Gold", "Center Stone: 1.5 Carat", "Clarity: VVS1", "Color: D"],
   };
 

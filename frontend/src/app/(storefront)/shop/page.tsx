@@ -2,15 +2,7 @@
 
 import ProductCard from "@/components/ProductCard";
 import { motion } from "framer-motion";
-
-const products = [
-  { id: 1, name: "Diamond Halo Ring", price: "$2,400", category: "Rings", image: "/images/bridal.png" },
-  { id: 2, name: "Minimalist Gold Cuff", price: "$850", category: "Bracelets", image: "/images/minimalist.png" },
-  { id: 3, name: "Emerald Drop Pendant", price: "$3,200", category: "Necklaces", image: "/images/emerald.png" },
-  { id: 4, name: "Sapphire Infinity Ring", price: "$1,800", category: "Rings", image: "/images/bridal.png" },
-  { id: 5, name: "Rose Gold Chain", price: "$450", category: "Necklaces", image: "/images/minimalist.png" },
-  { id: 6, name: "Pearl Cluster Earrings", price: "$600", category: "Earrings", image: "/images/emerald.png" },
-];
+import { products } from "@/lib/data";
 
 export default function Shop() {
   return (
